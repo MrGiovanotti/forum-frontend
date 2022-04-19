@@ -1,7 +1,12 @@
-<div class="form-container p-5 animate__animated animate__fadeInUp">
-  <h3><em class="fa-solid fa-pencil"></em> Escribe en el foro</h3>
+<h2 *ngIf="loading">Cargando...</h2>
+<div *ngIf="!loading" class="form-container p-5 animate__animated animate__lightSpeedInLeft">
+  <h6><em class="fa-solid fa-pencil"></em> Responder a {{ responseToReplay.user.name }}</h6>
   <hr />
-  <form action="" autocomplete="off" (ngSubmit)="save(myForm)" #myForm="ngForm">
+  <div class="snapshot-comment p-2 mb-2">
+    <header>{{ responseToReplay.user.name }} escribió:</header>
+    <p>{{ responseToReplay.content }}</p>
+  </div>
+  <form action="" autocomplete="off" (ngSubmit)="replayResponse(myForm)" #myForm="ngForm">
     <div class="form-group">
       <label for="name" class="form-label">Escribe tu nombre</label>
       <input
@@ -27,7 +32,7 @@
       id="comment"
       cols="30"
       rows="5"
-      placeholder="Escribe aquí lo que deseas compartir"
+      placeholder="Escribe aquí tu respuesta"
       #comment="ngModel"></textarea>
     </div>
     <div class="mt-4">

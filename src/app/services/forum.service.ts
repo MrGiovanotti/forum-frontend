@@ -37,5 +37,15 @@ export class ForumService {
     return this.http.get(this.URL.concat(ACTION, id)) as Observable<Comment>;
   }
 
+  getResponse(commentId: string, responseId: string): Observable<Comment> {
+    const ACTION = 'response/';
+    return this.http.get(this.URL.concat(ACTION, commentId, '/', responseId)) as Observable<Comment>;
+  }
+
+  replayResponse(commentId: string, responseId: string, requestHelper: RequestHelper): Observable<any> {
+    const ACTION = 'replay-response/';
+    return this.http.put(this.URL.concat(ACTION, commentId, '/', responseId), requestHelper);
+  }
+
 
 }

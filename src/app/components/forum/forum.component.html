@@ -10,21 +10,29 @@
   </section>
 
   <section class="forum-comments">
-    <div *ngFor="let comment of comments" class="comment p-3 my-2 animate__animated animate__backInLeft">
-      <section class="avatar">{{ comment.user.name | avatarize }}</section>
+    <div *ngFor="let comment of comments.reverse()" class="comment p-3 my-2 animate__animated animate__backInLeft">
+      <section class="avatar avatar-main">{{ comment.user.name | avatarize }}</section>
       <section class="comment-header mt-3">{{ comment.user.name }}<a [routerLink]="[REPLAY_ROUTE, comment.id]" title="Responder"><em class="fa-solid fa-reply"></em></a></section>
       <section class="comment-date mb-3"><em class="fa-solid fa-calendar-days"></em> {{ comment.date }}</section>
       <section class="comment-content">{{ comment.content }}</section>
       <section class="comment-replays my-3">
         <div *ngFor="let response of comment.responses">
           <section class="replay-header">
-            <section class="replay-avatar">{{ response.user.name | avatarize }}</section>
+            <section class="replay-avatar avatar-first">{{ response.user.name | avatarize }}</section>
             <section class="replay-name mt-3">{{ response.user.name }}</section>
-            <section class="replay-date">{{ response.date }}<a [routerLink]="[REPLAY_ROUTE, comment.id]" title="Responder"><em class="fa-solid fa-reply"></em></a></section>
+            <section class="replay-date">{{ response.date }}<a [routerLink]="[REPLAY_RESPONSE_ROUTE, comment.id, response.id]" title="Responder"><em class="fa-solid fa-reply"></em></a></section>
           </section>
-
           <section class="replay-content">{{ response.content }}</section>
-
+          <section class="comment-replays my-3">
+            <div *ngFor="let responseReplay of response.responses">
+              <section class="replay-header">
+                <section class="replay-avatar avatar-second">{{ responseReplay.user.name | avatarize }}</section>
+                <section class="replay-name mt-3">{{ responseReplay.user.name }}</section>
+                <section class="replay-date">{{ responseReplay.date }}</section>
+              </section>
+              <section class="replay-content">{{ responseReplay.content }}</section>
+            </div>
+          </section>
         </div>
       </section>
     </div>

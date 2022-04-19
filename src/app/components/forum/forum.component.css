@@ -4,10 +4,7 @@
 }
 
 .avatar {
-  background-color: rgb(175, 193, 41);
   color: aliceblue;
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,16 +40,32 @@ section a {
 }
 
 .replay-avatar {
-  background-color: rgb(89, 187, 112);
   color: aliceblue;
-  width: 30px;
-  height: 30px;
-  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   margin-right: 2px;
+}
+
+.avatar-main {
+  background-color: rgb(175, 193, 41);
+  width: 50px;
+  height: 50px;
+}
+
+.avatar-first {
+  background-color: rgb(89, 187, 112);
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+}
+
+.avatar-second {
+  background-color: rgb(74, 89, 228);
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
 }
 
 .replay-name {

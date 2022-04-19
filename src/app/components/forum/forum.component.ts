@@ -14,12 +14,15 @@ export class ForumComponent implements OnInit {
 
   WRITE_ROUTE: string;
   REPLAY_ROUTE: string;
+  REPLAY_RESPONSE_ROUTE: string;
 
   loading: boolean;
 
   constructor(private forumService: ForumService) {
     this.WRITE_ROUTE = '/'.concat(ConstantsUtils.WRITE_ROUTE);
     this.REPLAY_ROUTE = '/'.concat(ConstantsUtils.REPLAY_ROUTE).replace(':id', '');
+    this.REPLAY_RESPONSE_ROUTE = '/'.concat(ConstantsUtils.REPLAY_RESPONSE_ROUTE)
+    .replace('/:responseId', '').replace(':commentId', '');
   }
 
   ngOnInit(): void {

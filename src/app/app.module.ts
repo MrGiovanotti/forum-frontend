@@ -11,6 +11,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { AvatarizePipe } from './pipes/avatarize.pipe';
 import { WriteComponent } from './components/write/write.component';
 import { ReplayComponent } from './components/replay/replay.component';
+import { ReplayResponseComponent } from './components/replay-response/replay-response.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReplayComponent } from './components/replay/replay.component';
     AvatarizePipe,
     WriteComponent,
     ReplayComponent,
+    ReplayResponseComponent,
   ],
   imports: [
     BrowserModule,
