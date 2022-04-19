@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { AvatarizePipe } from './pipes/avatarize.pipe';
 import { WriteComponent } from './components/write/write.component';
+import { ReplayComponent } from './components/replay/replay.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { WriteComponent } from './components/write/write.component';
     ForumComponent,
     AvatarizePipe,
     WriteComponent,
+    ReplayComponent,
   ],
   imports: [
     BrowserModule,

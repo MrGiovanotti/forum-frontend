@@ -13,15 +13,20 @@ export class ForumComponent implements OnInit {
   comments: Array<Comment>;
 
   WRITE_ROUTE: string;
+  REPLAY_ROUTE: string;
+
+  loading: boolean;
 
   constructor(private forumService: ForumService) {
     this.WRITE_ROUTE = '/'.concat(ConstantsUtils.WRITE_ROUTE);
+    this.REPLAY_ROUTE = '/'.concat(ConstantsUtils.REPLAY_ROUTE).replace(':id', '');
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.forumService.getForum().subscribe(data => {
       this.comments = data.comments;
-      console.log(this.comments);
+      this.loading = false;
     }, err => {
       console.log(err);
     });

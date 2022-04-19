@@ -1,8 +1,9 @@
-<div *ngIf="comments.length == 0" class="alert alert-success text-center">
+<h2 *ngIf="loading" class="mt-5">Cargando...</h2>
+<div *ngIf="comments.length == 0 && !loading" class="alert alert-success text-center">
   Nadie ha escrito en el foro. ¡Se tú el primero!
 </div>
 
-<div class="forum">
+<div class="forum" *ngIf="!loading">
 
   <section class="forum-actions">
     <a class="btn btn-secondary" [routerLink]="[WRITE_ROUTE]"><em class="fa-solid fa-pen"></em> Escribe en el foro</a>
@@ -10,13 +11,22 @@
 
   <section class="forum-comments">
     <div *ngFor="let comment of comments" class="comment p-3 my-2 animate__animated animate__backInLeft">
-      <div class="avatar">{{ comment.user.name | avatarize }}</div>
-      <div class="comment-header mt-3">{{ comment.user.name }}</div>
-      <div class="comment-date mb-3"><em class="fa-solid fa-calendar-days"></em> {{ comment.date }}</div>
-      <div class="comment-content">{{ comment.content }}</div>
-      <div class="comment-actions">
-        <button class="btn btn-primary mt-4"><em class="fa-solid fa-reply"></em> Responder</button>
-      </div>
+      <section class="avatar">{{ comment.user.name | avatarize }}</section>
+      <section class="comment-header mt-3">{{ comment.user.name }}<a [routerLink]="[REPLAY_ROUTE, comment.id]" title="Responder"><em class="fa-solid fa-reply"></em></a></section>
+      <section class="comment-date mb-3"><em class="fa-solid fa-calendar-days"></em> {{ comment.date }}</section>
+      <section class="comment-content">{{ comment.content }}</section>
+      <section class="comment-replays my-3">
+        <div *ngFor="let response of comment.responses">
+          <section class="replay-header">
+            <section class="replay-avatar">{{ response.user.name | avatarize }}</section>
+            <section class="replay-name mt-3">{{ response.user.name }}</section>
+            <section class="replay-date">{{ response.date }}<a [routerLink]="[REPLAY_ROUTE, comment.id]" title="Responder"><em class="fa-solid fa-reply"></em></a></section>
+          </section>
+
+          <section class="replay-content">{{ response.content }}</section>
+
+        </div>
+      </section>
     </div>
   </section>
 

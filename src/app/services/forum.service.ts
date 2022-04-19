@@ -22,9 +22,19 @@ export class ForumService {
     return this.http.get(this.URL.concat(ACTION)) as Observable<Forum>;
   }
 
-  addComment(comment: RequestHelper): Observable<any> {
+  addComment(requestHelper: RequestHelper): Observable<any> {
     const ACTION = 'add-comment';
-    return this.http.post<any>(this.URL.concat(ACTION), comment);
+    return this.http.post<any>(this.URL.concat(ACTION), requestHelper);
+  }
+
+  replayComment(id: string, requestHelper: RequestHelper): Observable<any> {
+    const ACTION = 'replay-comment/';
+    return this.http.put(this.URL.concat(ACTION, id), requestHelper);
+  }
+
+  getComment(id: string): Observable<Comment> {
+    const ACTION = 'comment/';
+    return this.http.get(this.URL.concat(ACTION, id)) as Observable<Comment>;
   }
 
 
